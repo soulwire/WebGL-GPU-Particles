@@ -137,7 +137,6 @@ function loadShaders( callback ) {
 // an initial random velocity
 function emitParticles( count, origin, velocities ) {
 
-    origin = origin || { x:0.0, y:0.0, z:0.0 };
     velocities = velocities || { x:0.0, y:0.0, z:0.0 };
 
     // Bind the particle data texture since we'll be updating it
@@ -188,7 +187,7 @@ function emitParticles( count, origin, velocities ) {
     split( chunks[0] );
 
     // Now that we have a set of chunks that fit, start updating the texture data
-    var i, j, n, m, chunk, data, force = 0.5;
+    var i, j, n, m, chunk, data, force = 1.0;
 
     for ( i = 0, n = chunks.length; i < n; i++ ) {
 
@@ -208,9 +207,9 @@ function emitParticles( count, origin, velocities ) {
                 random( 10 ),
 
                 // Populate the velocity slot with an initial random force
-                velocities.x + force * random( -1, 1 ),
-                velocities.y + force * random( -1, 1 ),
-                velocities.z + force * random( -1, 1 ),
+                velocities.x + force * random( -1.0, 1.0 ),
+                velocities.y + force * random( -1.0, 1.0 ),
+                velocities.z + force * random( -1.0, 1.0 ),
 
                 // Empty data slot
                 0
@@ -412,13 +411,13 @@ gl.setup = function() {
 gl.draw = function() {
 
     // Spit out some initial particles
-    // if ( this.millis < 2000 ) {
-    //     emitParticles( 1000, {
-    //         x: -1.0 + sin( this.millis * 0.002 ) * 2.0,
-    //         y: -0.2 + cos( this.millis * 0.002 ) * 0.5,
-    //         z: 0.0
-    //     });
-    // }
+    if ( gl.millis < 3000 ) {
+        emitParticles( 800, {
+            x: -1.0 + sin( gl.millis * 0.001 ) * 2.0,
+            y: -0.2 + cos( gl.millis * 0.004 ) * 0.5,
+            z: sin( gl.millis * 0.015 ) * -0.05
+        });
+    }
 
     stats.begin();
 
