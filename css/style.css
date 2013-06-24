@@ -57,8 +57,7 @@ html, body {
 }
 
 .cb .toggle ~ .button {
-    background: #c0392b;
-    /*background: #000;*/
+    background: #000;
 }
 
 .cb .toggle:checked ~ .button {
