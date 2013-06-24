@@ -18,9 +18,8 @@ html, body {
 
     position: absolute;
     cursor: pointer;
-    /*opacity: 0.8;*/
-    right: 10px;
-    top: 70px;
+    right: 20px;
+    top: 20px;
 }
 
 .cb .button {
@@ -52,6 +51,7 @@ html, body {
     opacity: 0.0;
     z-index: 1;
     display: block;
+    cursor: pointer;
     height: 100%;
     width: 100%;
 }

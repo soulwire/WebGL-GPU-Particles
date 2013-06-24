@@ -21,7 +21,7 @@ var PARTICLE_TEXTURE_WIDTH = PARTICLE_COUNT_SQRT * PARTICLE_DATA_SLOTS;
 var PARTICLE_TEXTURE_HEIGHT = PARTICLE_COUNT_SQRT;
 
 // How many particles can be emitted at a given time
-var PARTICLE_EMIT_RATE = 900;
+var PARTICLE_EMIT_RATE = 1000;
 
 /*
 ------------------------------------------------------------
@@ -205,7 +205,7 @@ function emitParticles( count, origin, velocities ) {
                 origin.z,
 
                 // Set the phase above 0, switching it on for use
-                random( 1, 10 ),
+                random( 10 ),
 
                 // Populate the velocity slot with an initial random force
                 velocities.x + force * random( -1, 1 ),
@@ -244,8 +244,8 @@ gl.setup = function() {
     // Add Stats.js so we can monitor the FPS
     stats = new Stats();
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.right = '10px';
-    stats.domElement.style.top = '10px';
+    stats.domElement.style.right = '20px';
+    stats.domElement.style.top = '50px';
     document.body.appendChild( stats.domElement );
 
     loadShaders( function() {
@@ -391,7 +391,7 @@ gl.setup = function() {
 
                     finger = fingers[i];
 
-                    emitParticles( 110 + Math.random() * 90, {
+                    emitParticles( random( 110, 200 ), {
                         x: finger.tipPosition.x / 200,
                         y: (finger.tipPosition.y / 200) - 1,
                         z: (finger.tipPosition.z / 400) * -1
@@ -412,13 +412,13 @@ gl.setup = function() {
 gl.draw = function() {
 
     // Spit out some initial particles
-    if ( this.millis < 2000 ) {
-        emitParticles( 1000, {
-            x: -1.0 + sin( this.millis * 0.002 ) * 2.0,
-            y: -0.2 + cos( this.millis * 0.002 ) * 0.5,
-            z: 0.0
-        });
-    }
+    // if ( this.millis < 2000 ) {
+    //     emitParticles( 1000, {
+    //         x: -1.0 + sin( this.millis * 0.002 ) * 2.0,
+    //         y: -0.2 + cos( this.millis * 0.002 ) * 0.5,
+    //         z: 0.0
+    //     });
+    // }
 
     stats.begin();
 
