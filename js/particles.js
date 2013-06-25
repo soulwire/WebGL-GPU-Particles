@@ -480,7 +480,7 @@ gl.mousemove = function() {
 
     if ( gl.running ) {
 
-        var i, n, x, y, touch;
+        var i, n, x, y, touch, limit = PARTICLE_EMIT_RATE / gl.touches.length;
 
         for ( i = 0, n = gl.touches.length; i < n; i++ ) {
 
@@ -491,7 +491,7 @@ gl.mousemove = function() {
             y = map( touch.y, 0, gl.height, 1, -1 );
 
             // Emit some particles!
-            emitParticles( PARTICLE_EMIT_RATE, {
+            emitParticles( limit, {
                 x: x,
                 y: y,
                 z: 0.0
