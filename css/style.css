@@ -9,6 +9,7 @@ html, body {
     background: -o-radial-gradient(center, ellipse cover,  #1c3149 0%,#0d121c 80%);
     background: -ms-radial-gradient(center, ellipse cover,  #1c3149 0%,#0d121c 80%);
     background: radial-gradient(ellipse at center,  #1c3149 0%,#0d121c 80%);
+    overflow: hidden;
     margin:0;
 }
 
