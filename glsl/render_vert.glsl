@@ -10,5 +10,5 @@ void main() {
     float phase = cos( particle.w ) * max( 0.5, tan( particle.z * 8.05 ) );
 
     gl_Position = vec4( particle.xyz, perspective );
-    gl_PointSize = ( 1.0 / perspective ) * ( 0.5 + phase );
+    gl_PointSize = min( 64.0, ( 1.0 / perspective ) * ( 0.5 + phase ) );
 }
