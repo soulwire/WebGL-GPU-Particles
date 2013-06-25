@@ -478,7 +478,9 @@ gl.draw = function() {
 
 gl.mousemove = function() {
 
-    if ( gl.running ) {
+    if ( gl.running && !gl.lastEmit || gl.millis - gl.lastEmit > 16 ) {
+
+        gl.lastEmit = gl.millis;
 
         var i, n, x, y, touch, limit = PARTICLE_EMIT_RATE / gl.touches.length;
 
