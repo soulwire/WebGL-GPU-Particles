@@ -1,0 +1,28 @@
+{
+  "name": "webgl-gpu-particles",
+  "version": "1.0.0",
+  "description": "WebGL GPU Particles",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf deploy",
+    "build": "npm run clean && webpack -p --env production",
+    "start": "webpack-dev-server --hot --inline --port 3000",
+    "commit_deploy": "git add deploy -A && git commit -m \"deploy files at `date`\" -n > /dev/null 2>&1; exit 0",
+    "ghpages": "git subtree split --prefix deploy/ -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
+    "deploy": "npm run build && npm run commit_deploy && npm run ghpages"
+  },
+  "author": "Justin Windle <justin@soulwire.co.uk>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "shader-loader": "^1.3.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
